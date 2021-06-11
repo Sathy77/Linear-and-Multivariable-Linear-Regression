@@ -5,7 +5,7 @@ Data = pd.read_csv('data 2.csv')
 
 print('Limited iteration press 1')
 print('Unlimited iteration press 2')
-num =int(input())
+num =int(input('press: '))
 
 plt.scatter(Data['X'], Data['Y'], marker='*', color='red')
 plt.xlabel('X-Axis')
@@ -14,6 +14,8 @@ plt.title('Linear Regression')
 
 thita0= 50
 thita1= 60
+oThita0=0
+oThita1=0
 learningRate=0.001
 
 df = pd.DataFrame(Data) 
@@ -33,7 +35,10 @@ print('cost_function= ',cost_function)
 
 if (num==1):
     iteration=int(input('How many iteration want!'))
+    
     for l in range(0,iteration):
+        oThita0=thita0
+        oThita1=thita1
         sum=0
         sum2= 0
         j=0
@@ -58,18 +63,25 @@ if (num==1):
         cost_function1=sum/(2*len(x_list))
         print('cost_function1= ',cost_function1)
         if(cost_function1 < cost_function):
+            flag=1
             cost_function=cost_function1  
         
         else:
+            flag=2
             break
-
-    print ('Best Thita0= ', thita0)
-    print ('Best Thita1= ', thita1)
+    if (flag==1):
+        print ('Best Thita0= ', oThita0)
+        print ('Best Thita1= ', oThita1)
+    else:
+        print ('Best Thita0= ', thita0)
+        print ('Best Thita1= ', thita1)
     
     
 if (num==2):    
     #for l in range(0,len(x_list)):
     while True:
+        oThita0=thita0
+        oThita1=thita1
         sum=0
         sum2= 0
         j=0
@@ -99,8 +111,8 @@ if (num==2):
         else:
             break
 
-    print ('Best Thita0= ', thita0)
-    print ('Best Thita1= ', thita1)
+    print ('Best Thita0= ', oThita0)
+    print ('Best Thita1= ', oThita1)
 #thita0 = 24.399952593923135
 #thita1 = 7.6000105970017025
 #print(thita0+thita1*8)
